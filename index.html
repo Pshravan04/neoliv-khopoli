@@ -217,6 +217,7 @@
                 var iti = window.intlTelInput(input, {
                     initialCountry: "in", // ✅ Default India
                     separateDialCode: true,
+                    allowDropdown: false,
                     utilsScript: "assets/js/utils.js",
                 });
                 itiInstances.push({ input: input, iti: iti });
@@ -418,15 +419,18 @@
                             <h1 class="text-center mb-1" style="font-weight: 600; text-transform: uppercase;">NeoLiv Khopoli Plots
                             </h1>
                             <h6 class="text-center mb-2" style="color: #353535; font-size: 15px;">By NeoLiv Group</h6>
-                            <h6 class="text-center mb-2" style="font-size: 15px; color: #6e6e6e;">At Mumbai-Pune Expressway, Khopoli</h6>
+                            <h6 class="text-center mb-2" style="font-size: 15px; color: #6e6e6e;">At Khopoli-Pali Main Road</h6>
                             <div class="offerBox animatedtext">
                                 <div class="innerBox">
+                                    <p class="mb-0">◆ 65 Acres of land*</p>
+                                    <p class="mb-0">◆ 33000 sqft Club House*</p>
                                     <p class="mb-0">◆ Exciting Early Bird Discounts*</p>
                                     <p class="mb-0">◆ Spot Booking Offers Available*</p>
 
                                 </div>
                             </div>
-                            <p class="offer-info-text text-center mb-0">Premium Residential Plots  1200 to 2700 Sq. Ft.</p>
+                            <p class="offer-info-text text-center mb-0">Premium Residential Plots <br> 1200 to 2700 Sq. Ft.</p>
+                            <p class="offer-info-text text-center mb-0">Starting From</p>
                             <div class="price-text"><span class="color-imp">₹ </span><span class="price-sub-text">72
                                     Lacs*</span> <span class="price"> Onwards.</span></div>
                             <button id="banner-enquiry-button" data-id="Enquiry" type="button"
@@ -465,28 +469,7 @@
                             <div><input type="hidden" name="form_name" id="form_name1" class="form-control form_name"
                                     value="Pre-Register Mobile" /> <input type="hidden" id="website_url1"
                                     class="website_url" name="website_url" /></div>
-                            <div class="form-group acceptance mb-3" style="font-size: 10px;">
-                                <label class="form-check-label text-start">
-                                    <input type="checkbox" checked class="form-check-input" />
-                                    <span class="text on-rera">
-                                        I Consent to The Processing of Provided Data According To <a
-                                            href="Privacy-Policy.html" style="color: #007bff;" target="_blank"> Privacy
-                                            Policy | Terms & Conditions</a>, I Authorize PropX8 and its representatives
-                                        to Call, SMS, Email or WhatsApp Me About Its Products
-                                        and Offers. I acknowledge that the project I am enquiring about has not yet
-                                        received RERA clearance. This Consent Overrides Any Registration For DNC/NDNC.
-                                    </span>
-                                    <span class="text non-rera">
-                                        Please be informed that this website is not intended to facilitate any sales
-                                        transactions. I understand and acknowledge that the project I am interested in
-                                        hasn't yet secured RERA clearance. The
-                                        primary purpose of this website is to generate interest and gather information.
-                                        By providing my data, I consent to its use in accordance with the
-                                        <a href="Privacy-Policy.html" style="color: #007bff;" target="_blank"> Privacy
-                                            Policy | Terms & Conditions</a>
-                                    </span>
-                                </label>
-                            </div>
+                           
                             <button type="submit" id="mobile-pre-register-button" data-id="Pre-Register Mobile"
                                 class="custom-btn data-id-btn on-rera" onclick="submitForm(event, 'Pre-Register')">
                                 <span class="enquireNowBtn">Pre-Register Now</span>
@@ -513,8 +496,7 @@
                             <div class="col-xl-6 col-lg-4 col-sm-12 mb-3">
                                 <div class="highlightData">
                                     <div class="iconBox"><i class="fa-solid fa-check-double"></i></div>
-                                    <p>24/7 Multi-Tier Security & CCTV | Modern Amenities & Landscaped Gardens
-                                    </p>
+                                    <p>Sonipat Project Sold out in 6hrs (260+ plots)</p>
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-4 col-sm-12 mb-3">
@@ -532,10 +514,44 @@
                                         Flexible Payment Plans | Best Pre-Launch Prices Available</p>
                                 </div>
                             </div>
+                             <div class="col-xl-6 col-lg-4 col-sm-12 mb-3">
+                                <div class="highlightData">
+                                    <div class="iconBox"><i class="fa-solid fa-check-double"></i></div>
+                                    <p>
+                                        Connectiviy with both Mumbai & Pune</p>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-4 col-sm-12 mb-3">
+                                <div class="highlightData">
+                                    <div class="iconBox"><i class="fa-solid fa-check-double"></i></div>
+                                    <p>
+                                        65 Acres of land</p>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-4 col-sm-12 mb-3">
+                                <div class="highlightData">
+                                    <div class="iconBox"><i class="fa-solid fa-check-double"></i></div>
+                                    <p>
+                                        Project Location, future strategic location </p>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-4 col-sm-12 mb-3">
+                                <div class="highlightData">
+                                    <div class="iconBox"><i class="fa-solid fa-check-double"></i></div>
+                                    <p>
+                                        Leadership Mohit Malhotra Ex Godrej CEO </p>
+                                </div>
+                            </div>
 
 
 
                         </div>
+                          <button id="request-brochure-button" type="button"
+                                        class="custom-btn data-id-btn on-rera" data-bs-target="#enquire-modal"
+                                        data-bs-toggle="modal" data-bs-whatever="Enquire Now" data-id="Brochure">
+                                        <span class="enquireNowBtn"><img src="assets/images/gif_icon/download.gif"
+                                                class="img-fluid icon_sz me-2" />Request Key Highlights</span>
+                                    </button>
                     </div>
                 </section>
                 <!--  Overview section  -->
@@ -544,7 +560,7 @@
                         <div class="row">
                             <div class="col-xl-7 col-lg-7 col-sm-12">
                                 <div class="overview-data">
-                                    <h1>🏙️ The New Standard of Luxury: NeoLiv Khopoli Plots</h1>
+                                    <h1>The New Standard of Luxury: NeoLiv Khopoli Plots</h1>
                                     <p class="overview-info">
                                         Discover a rare opportunity to own a piece of the future in the serene yet rapidly developing landscape of Khopoli. Strategically positioned along the high-growth Mumbai-Pune Expressway corridor, NeoLiv Khopoli Plots offers an exquisite blend of nature-infused tranquility and sophisticated urban planning. These luxury residential plots are residential development located in the heart of
                                         Powai, one of Mumbai’s most established and sought-after neighborhoods. Designed
@@ -669,21 +685,21 @@
                                     <div class="slide-item">
                                         <div class="amenity-content amenities-img-holder"
                                             style="width: 100%; height:auto;">
-                                            <img src="assets/images/amenities/Amphitheatre.webp" alt="Amphitheatre" />
-                                            <p>Amphitheatre</p>
+                                            <img src="assets/images/amenities/Club house.png" alt="Club House" />
+                                            <p>Club House</p>
                                         </div>
                                     </div>
                                     <div class="slide-item">
                                         <div class="amenity-content amenities-img-holder"
                                             style="width: 100%; height:auto;">
-                                            <img src="assets/images/amenities/Court.png" alt="Court" />
-                                            <p>Court</p>
+                                            <img src="assets/images/amenities/Racket courts.png" alt="Sports Courts" />
+                                            <p>Sports Courts</p>
                                         </div>
                                     </div>
                                     <div class="slide-item">
                                         <div class="amenity-content amenities-img-holder"
                                             style="width: 100%; height:auto;">
-                                            <img src="assets/images/amenities/KidsPlayArea.webp" alt="Kids Play Area" />
+                                            <img src="assets/images/amenities/Kids Play Area.png" alt="Kids Play Area" />
                                             <p>Kids Play Area</p>
                                         </div>
                                     </div>
