@@ -104,17 +104,17 @@
     <!-- js start -->
     <script src="assets/js/jquery.min.js"></script>
 
-    <script src="assets/js/intlTelInput.min.js"></script>
-    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/intlTelInput.min.js" defer></script>
+    <script src="assets/js/utils.js" defer></script>
     <script src="assets/js/jquery-ui.min.js"></script>
     <script src="assets/js/jquery.ui.touch-punch.min.js"></script>
     <!-- slid to submit end-->
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js" defer></script>
+    <script src="assets/js/popper.min.js" defer></script>
+    <script src="assets/js/bootstrap.min.js" defer></script>
     <!-- gallery JS -->
-    <script src="assets/js/slick.min.js"></script>
-    <script src="assets/js/slick-lightbox.min.js"></script>
+    <script src="assets/js/slick.min.js" defer></script>
+    <script src="assets/js/slick-lightbox.min.js" defer></script>
     <script src="assets/js/custom.js"></script>
     <script type="text/javascript">
         $(window).on("load", function () {
@@ -350,8 +350,18 @@
                         .project-logo {
                             margin-top: 4px !important;
                             margin-bottom: 4px !important;
-                        }
-                    }
+
+                            @media (max-width: 767px) {
+                                .carousel-inner img {
+                                    height: 350px !important;
+                                }
+                            }
+
+                            .carousel-inner img {
+                                height: 650px;
+                                object-fit: cover;
+                                object-position: center;
+                            }
                 </style>
             </div>
         </div>
@@ -363,11 +373,14 @@
                 <!--  Top Section  -->
                 <section id="home">
                     <div class="container-fuild">
-                        <div id="banner-carousel" class="carousel slide d-block" data-bs-ride="carousel">
+                        <div id="banner-carousel" class="carousel slide d-block" data-bs-ride="carousel"
+                            data-bs-interval="2000" data-bs-wrap="true" data-bs-pause="false">
                             <div class="carousel-indicators">
                                 <button type="button" data-bs-target="#banner-carousel" data-bs-slide-to="0"
                                     class="active"></button>
                                 <button type="button" data-bs-target="#banner-carousel" data-bs-slide-to="1"
+                                    class=""></button>
+                                <button type="button" data-bs-target="#banner-carousel" data-bs-slide-to="2"
                                     class=""></button>
 
 
@@ -800,7 +813,8 @@
                                     <div class="slide-item">
                                         <div class="amenity-content amenities-img-holder"
                                             style="width: 100%; height:auto;">
-                                            <img src="assets/images/amenities/Kids Play Area.png" alt="Banquet" />
+                                            <img src="assets/images/amenities/Kids Play Area.png" alt="Banquet"
+                                                loading="lazy" />
                                             <p>Banquet</p>
                                         </div>
                                     </div>
@@ -831,42 +845,50 @@
                             <div class="gallery js-gallery">
                                 <div class="gallery-item">
                                     <div class="gallery-img-holder js-gallery-popup"><img
-                                            src="assets/images/gallery/Gallery1.png" alt="" class="gallery-img" />
+                                            src="assets/images/gallery/Gallery1.png" alt="" class="gallery-img"
+                                            loading="lazy" />
                                     </div>
                                 </div>
                                 <div class="gallery-item">
                                     <div class="gallery-img-holder js-gallery-popup"><img
-                                            src="assets/images/gallery/Gallery2.png" alt="" class="gallery-img" />
+                                            src="assets/images/gallery/Gallery2.png" alt="" class="gallery-img"
+                                            loading="lazy" />
                                     </div>
                                 </div>
                                 <div class="gallery-item">
                                     <div class="gallery-img-holder js-gallery-popup"><img
-                                            src="assets/images/gallery/Gallery3.png" alt="" class="gallery-img" />
+                                            src="assets/images/gallery/Gallery3.png" alt="" class="gallery-img"
+                                            loading="lazy" />
                                     </div>
                                 </div>
                                 <div class="gallery-item">
                                     <div class="gallery-img-holder js-gallery-popup"><img
-                                            src="assets/images/gallery/Gallery4.png" alt="" class="gallery-img" />
+                                            src="assets/images/gallery/Gallery4.png" alt="" class="gallery-img"
+                                            loading="lazy" />
                                     </div>
                                 </div>
                                 <div class="gallery-item">
                                     <div class="gallery-img-holder js-gallery-popup"><img
-                                            src="assets/images/gallery/Gallery5.png" alt="" class="gallery-img" />
+                                            src="assets/images/gallery/Gallery5.png" alt="" class="gallery-img"
+                                            loading="lazy" />
                                     </div>
                                 </div>
                                 <div class="gallery-item">
                                     <div class="gallery-img-holder js-gallery-popup"><img
-                                            src="assets/images/gallery/Gallery6.png" alt="" class="gallery-img" />
+                                            src="assets/images/gallery/Gallery6.png" alt="" class="gallery-img"
+                                            loading="lazy" />
                                     </div>
                                 </div>
                                 <div class="gallery-item">
                                     <div class="gallery-img-holder js-gallery-popup"><img
-                                            src="assets/images/gallery/Gallery7.png" alt="" class="gallery-img" />
+                                            src="assets/images/gallery/Gallery7.png" alt="" class="gallery-img"
+                                            loading="lazy" />
                                     </div>
                                 </div>
                                 <div class="gallery-item">
                                     <div class="gallery-img-holder js-gallery-popup"><img
-                                            src="assets/images/gallery/Gallery8.png" alt="" class="gallery-img" />
+                                            src="assets/images/gallery/Gallery8.png" alt="" class="gallery-img"
+                                            loading="lazy" />
                                     </div>
                                 </div>
 
@@ -882,7 +904,7 @@
                             <div class="col-xl-12">
                                 <iframe frameborder="0" allowfullscreen="" sandbox="allow-scripts allow-same-origin"
                                     title="Google map"
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.823121580047!2d73.2621!3d18.7447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7e0e0e0e0e0e1%3A0x0!2sKhopoli%20Mumbai%20Pune%20Expressway!5e0!3m2!1sen!2sin!4v1674000000000"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30220.046297330984!2d73.26725066378543!3d18.77559976140616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be8070010b6396b%3A0x1fd13ab63fdd91e2!2sNeoliv%20GrandHit%20Khopoli!5e0!3m2!1sen!2sin!4v1771581694703!5m2!1sen!2sin"
                                     width="100%" height="300"
                                     style="border: 1px solid #333; padding: 2px; background: #fff;"></iframe>
                             </div>
@@ -926,6 +948,7 @@
                                         <div class="tab-pane fade active show" id="business">
                                             <ul>
                                                 <li>Mumbai-Pune Expressway - Connected</li>
+                                                <li>Imagicaa Theme Park - 5 Mins</li>
                                                 <li>Navi Mumbai International Airport (NMIA) - 20 Mins</li>
                                                 <li>Khopoli Railway Station - 5 Mins</li>
                                                 <li>Panvel Railway Station - 25 Mins</li>
@@ -949,7 +972,6 @@
                                             <ul>
                                                 <li>Food Plaza Court Mall - Nearby</li>
                                                 <li>Susan Mall - Nearby</li>
-                                                <li>Imagicaa Theme Park - Nearby</li>
                                                 <li>Shopping & Entertainment Hubs in Region</li>
 
                                             </ul>
