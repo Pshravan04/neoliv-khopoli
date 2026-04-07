@@ -3,6 +3,9 @@ ob_start();
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
+// Check if it's an AJAX request
+$isAjax = !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -14,47 +17,72 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = htmlspecialchars($_POST['name'] ?? '');
     $email = htmlspecialchars($_POST['email'] ?? '');
     $mobile = htmlspecialchars($_POST['mobile'] ?? '');
+    $form_name = htmlspecialchars($_POST['form_name'] ?? 'General Enquiry');
 
     // Optional Logging
-    file_put_contents("debug-log.txt", data: "Name: $name | Email: $email | Phone: $mobile\n", FILE_APPEND);
+    file_put_contents("debug-log.txt", date('Y-m-d H:i:s') . " - Name: $name | Email: $email | Phone: $mobile | Form: $form_name\n", FILE_APPEND);
 
     $mail = new PHPMailer(true);
 
     try {
         $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';
-        $mail->SMTPAuth   = true;
-        $mail->Username   = 'rock83694@gmail.com';
-        $mail->Password   = 'eigvmkokcvihyboz';
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'your-email@gmail.com';
+        $mail->Password = 'your-app-password';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = 587;
+        $mail->Port = 587;
 
-        $mail->setFrom('rock83694@gmail.com', 'Website Lead');
-       
-         $mail->addAddress('salesconnect.teambb@gmail.com');
-        $mail->addAddress('thegrowthmonks@gmail.com');
-        $mail->addAddress('rock83694@gmail.com');
+        $mail->setFrom('your-email@gmail.com', 'Website Lead');
+
+        $mail->addAddress('leads@example.com');
 
         $mail->isHTML(true);
-        $mail->Subject = 'New Lead NeoLiv Khopoli';
+        $mail->Subject = "New Lead: $form_name - NeoLiv Khopoli";
         $mail->Body = "
             <h2>New Lead Submission</h2>
+            <p><strong>Form Name:</strong> {$form_name}</p>
             <p><strong>Name:</strong> {$name}</p>
             <p><strong>Email:</strong> {$email}</p>
-            <p><strong>Phone:</strong> {$phone}</p>
+            <p><strong>Phone:</strong> {$mobile}</p>
+            <p><strong>Source URL:</strong> " . ($_POST['currentUrl'] ?? 'Not specified') . "</p>
         ";
 
         if ($mail->send()) {
-            header("Location: thankyou.html");
-            exit();
+            if ($isAjax) {
+                header('Content-Type: application/json');
+                echo json_encode(['status' => 'success', 'message' => 'Email sent successfully']);
+                exit();
+            } else {
+                header("Location: thankyou.html");
+                exit();
+            }
         } else {
-            echo "Mailer Error: " . $mail->ErrorInfo;
+            if ($isAjax) {
+                header('Content-Type: application/json');
+                echo json_encode(['status' => 'error', 'message' => $mail->ErrorInfo]);
+                exit();
+            } else {
+                echo "Mailer Error: " . $mail->ErrorInfo;
+            }
         }
 
     } catch (Exception $e) {
-        echo "Error Sending Email: {$mail->ErrorInfo}";
+        if ($isAjax) {
+            header('Content-Type: application/json');
+            echo json_encode(['status' => 'error', 'message' => $mail->ErrorInfo]);
+            exit();
+        } else {
+            echo "Error Sending Email: {$mail->ErrorInfo}";
+        }
     }
 
 } else {
-    echo "⚠️ Invalid Request: Must be POST.";
+    if ($isAjax) {
+        header('Content-Type: application/json');
+        echo json_encode(['status' => 'error', 'message' => 'Invalid Request']);
+        exit();
+    } else {
+        echo "⚠️ Invalid Request: Must be POST.";
+    }
 }
