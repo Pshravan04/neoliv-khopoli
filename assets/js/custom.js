@@ -1,50 +1,49 @@
 $(document).ready(function () {
-    
-      $('[data-toggle="tooltip"]').tooltip();
-    
+
+    $('[data-toggle="tooltip"]').tooltip();
+
     // Rera Non-Rera 
     //  $("body").attr('id', 'on-rera');
 
-    
+
     // Rera Non-Rera Condition
     $("body").attr('id', 'on-rera'); // Or 'non-rera'
     $("body").removeClass('is-loading'); // Remove hiding class AFTER setting the 
-    
-        $('#navbarNav a[href^="#"]').on('click', function (e) {
-            e.preventDefault(); // Prevent default anchor behavior
 
-            let target = $($(this).attr('href')); // Get the target element
-            let offset = 50; // Offset height (e.g., height of fixed header)
+    $('#navbarNav a[href^="#"]').on('click', function (e) {
+        e.preventDefault(); // Prevent default anchor behavior
 
-            if (target.length) {
-                $('html, body').animate(
-                    {
-                        scrollTop: target.offset().top - offset
-                    },
-                    500 // Animation duration in ms
-                );
-            }
+        let target = $($(this).attr('href')); // Get the target element
+        let offset = 50; // Offset height (e.g., height of fixed header)
+
+        if (target.length) {
+            $('html, body').animate(
+                {
+                    scrollTop: target.offset().top - offset
+                },
+                500 // Animation duration in ms
+            );
+        }
     });
 
 
+    // Location Advantage stop a href 
+    // Adjust scroll for anchor links
+    $('#exTab1 > a[href^="#"]').on('click', function (e) {
+        e.preventDefault(); // Prevent default anchor behavior
 
-// Location Advantage stop a href 
-        // Adjust scroll for anchor links
-        $('#exTab1 > a[href^="#"]').on('click', function (e) {
-            e.preventDefault(); // Prevent default anchor behavior
+        let target = $($(this).attr('href')); // Get the target element
+        let offset = 50; // Offset height (e.g., height of fixed header)
 
-            let target = $($(this).attr('href')); // Get the target element
-            let offset = 50; // Offset height (e.g., height of fixed header)
-
-            if (target.length) {
-                $('html, body').animate(
-                    {
-                        scrollTop: target.offset().top - offset
-                    },
-                    500 // Animation duration in ms
-                );
-            }
-        });
+        if (target.length) {
+            $('html, body').animate(
+                {
+                    scrollTop: target.offset().top - offset
+                },
+                500 // Animation duration in ms
+            );
+        }
+    });
 
     // Form name submission code
     $(".custom-btn, .data-id-btn").click(function () {
@@ -53,16 +52,16 @@ $(document).ready(function () {
     });
 
     // Toggle more and less content
-     $(".moredisclaimerBtn").click(function () {
+    $(".moredisclaimerBtn").click(function () {
         if ($(this).html() === 'Read more <i class="fa fa-chevron-down"></i>') {
-          $(this).html('Read less <i class="fa fa-chevron-up"></i>');
+            $(this).html('Read less <i class="fa fa-chevron-up"></i>');
         }
         else {
-          $(this).html('Read more <i class="fa fa-chevron-down"></i>');
+            $(this).html('Read more <i class="fa fa-chevron-down"></i>');
         }
         $(".moredisclaimerText[data-hit=more" + $(this).data('target') + "]").slideToggle(500);
-      });
-    
+    });
+
     $(".moreBtn").click(function () {
         var button = $(this);
         var target = button.data('target');
@@ -81,6 +80,15 @@ $(document).ready(function () {
         modal.find('input[name="recipient"]').val(recipient);
     });
 
+    // Ensure Hero Slider interval is 2 seconds
+    var heroCarousel = document.querySelector('#banner-carousel');
+    if (heroCarousel) {
+        new bootstrap.Carousel(heroCarousel, {
+            interval: 2000,
+            ride: 'carousel'
+        });
+    }
+
 });
 
 //form submit//
@@ -96,19 +104,19 @@ function submitForm(event, formName) {
         return; // Exit if form doesn't exist
     }
     var price = $(".price-sub-text").text().trim();
-    
+
 
     // --- URL Handling ---
     var currentUrl = window.location.href;
-    
-     // Fix URL if it contains more than one '?'
+
+    // Fix URL if it contains more than one '?'
     var questionMarkIndex = currentUrl.indexOf('?');
     var secondQuestionMarkIndex = currentUrl.indexOf('?', questionMarkIndex + 1);
 
     if (secondQuestionMarkIndex !== -1) {
         currentUrl = currentUrl.substring(0, secondQuestionMarkIndex) + '&' + currentUrl.substring(secondQuestionMarkIndex + 1);
     }
-    
+
     // Handle URL fragment (everything after #)
     var hashIndex = currentUrl.indexOf('#');
     if (hashIndex !== -1) {
@@ -117,10 +125,9 @@ function submitForm(event, formName) {
     }
 
 
-
     // --- Clear Previous Errors & Styles ---
     const errorMessages = formElement.querySelectorAll('.error');
-    errorMessages.forEach(function(error) {
+    errorMessages.forEach(function (error) {
         error.style.display = 'none';
     });
     const inputs = formElement.querySelectorAll('input, textarea');
@@ -161,14 +168,14 @@ function submitForm(event, formName) {
 
     // Validate Mobile
     if (mobileInput) { // Check if the input exists
-         console.log("Mobile input found. Is required?", mobileInput.required); // DEBUG
+        console.log("Mobile input found. Is required?", mobileInput.required); // DEBUG
         if (mobileInput.required) { // Only validate if it's required
             const mobileValue = mobileInput.value.trim(); // Trim whitespace!
-             const mobileErrorSpan = mobileInput.closest('.forms-input-fields')?.querySelector('.error') || mobileInput.parentNode.querySelector('.error'); // Try parentNode as fallback
+            const mobileErrorSpan = mobileInput.closest('.forms-input-fields')?.querySelector('.error') || mobileInput.parentNode.querySelector('.error'); // Try parentNode as fallback
             console.log(`Mobile value (raw): "${mobileInput.value}" | (trimmed): "${mobileValue}"`); // DEBUG
 
             if (mobileValue === '') {
-                 console.log("Validation Failed: Mobile is empty or spaces."); // DEBUG
+                console.log("Validation Failed: Mobile is empty or spaces."); // DEBUG
                 isValid = false;
                 if (mobileErrorSpan) {
                     mobileErrorSpan.textContent = 'Mobile field is required.';
@@ -203,7 +210,8 @@ function submitForm(event, formName) {
         form_name: formnameValue,
         website_url: formData.get('website_url') ? formData.get('website_url') : window.location.origin,
         price: price,
-        currentUrl: currentUrl
+        currentUrl: currentUrl,
+        'form-name': formElement.getAttribute('name')
     };
 
     // --- Disable Submit Button ---
@@ -222,65 +230,69 @@ function submitForm(event, formName) {
     } else {
         console.warn("Submit button not found for disabling!");
     }
-    
-    
-        // --- AJAX Request ---
-        console.log("Sending AJAX request to send_email.php with data:", form_data); // DEBUG
-        $.ajax({
-            type: 'POST',
-            url: 'send_email.php',
-            data: form_data,
-            success: function(response) {
-                console.log("AJAX Success Response:", response); // DEBUG
+
+
+    // --- AJAX Request ---
+    console.log("Sending AJAX request to submit.php with data:", form_data); // DEBUG
+    $.ajax({
+        type: 'POST',
+        url: 'submit.php',
+        data: form_data,
+        dataType: 'json',
+        success: function (response) {
+            console.log("AJAX Success Response:", response); // DEBUG
+
+            if (response.status === 'success') {
                 formElement.reset();
                 inputs.forEach(input => {
                     input.classList.remove('is-invalid', 'is-valid');
                 });
                 errorMessages.forEach(error => error.style.display = 'none');
-    
+
                 if (formName === 'modal-form' || formName === 'main-popup') {
-                     const modalElement = document.getElementById('enquire-modal');
-                     if (modalElement) {
-                         try { // Add try-catch for modal instance
+                    const modalElement = document.getElementById('enquire-modal');
+                    if (modalElement) {
+                        try {
                             const modalInstance = bootstrap.Modal.getInstance(modalElement);
                             if (modalInstance) { modalInstance.hide(); }
                             else { $(modalElement).modal('hide'); }
-                         } catch (e) {
+                        } catch (e) {
                             console.error("Error hiding modal:", e);
-                            $(modalElement).modal('hide'); // Fallback jQuery hide
-                         }
-                     }
-                }
-    
-                  if (formnameValue === 'Brochure') {
-                    window.location.href = 'thank-you55d255d2.html?formName=Brochure';
-                    //  window.location.href = 'thank-you.html';
-                } else if (formnameValue === 'Sample-Flat') {
-				window.location.href = 'thank-you16da16da.html?formName=Sample-Flat'; 
-			    }else {
-                    window.location.href = 'thank-you.html';
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error('AJAX Error:', status, error, xhr.responseText); // DEBUG
-                alert('An error occurred while submitting the form. Please try again later.');
-            },
-            complete: function() {
-                console.log("AJAX request complete."); // DEBUG
-                if (submitButton) {
-                    submitButton.disabled = false;
-                    const span = submitButton.querySelector('span');
-                    if (span) {
-                        span.textContent = originalButtonText;
-                    } else {
-                        submitButton.textContent = originalButtonText;
+                            $(modalElement).modal('hide');
+                        }
                     }
                 }
+
+                if (formnameValue === 'Brochure') {
+                    window.location.href = 'thankyou.html?formName=Brochure';
+                } else if (formnameValue === 'Sample-Flat') {
+                    window.location.href = 'thankyou.html?formName=Sample-Flat';
+                } else {
+                    window.location.href = 'thankyou.html';
+                }
+            } else {
+                alert('Submission failed: ' + response.message);
             }
+        },
+        error: function (xhr, status, error) {
+            console.error('AJAX Error:', status, error, xhr.responseText); // DEBUG
+            alert('An error occurred while submitting the form. Please try again later.');
+        },
+        complete: function () {
+            console.log("AJAX request complete."); // DEBUG
+            if (submitButton) {
+                submitButton.disabled = false;
+                const span = submitButton.querySelector('span');
+                if (span) {
+                    span.textContent = originalButtonText;
+                } else {
+                    submitButton.textContent = originalButtonText;
+                }
+            }
+        }
 
-        });
-    }
-
+    });
+}
 
 //#sitelink code (to prepend #sectionID)
 (function () {
@@ -289,26 +301,25 @@ function submitForm(event, formName) {
     const currentUrl = new URL(window.location.html);
 
     if (currentUrl.search.length) {
-      utmParams = currentUrl.search;
+        utmParams = currentUrl.search;
     }
 
     if (!utmParams && currentUrl.hash.includes("?")) {
-      utmParams = "?" + currentUrl.hash.split("?")[1];
+        utmParams = "?" + currentUrl.hash.split("?")[1];
     }
 
     document.querySelectorAll('#navbarNav a.nav-link[href^="#"]').forEach(link => {
-      link.addEventListener('click', function (e) {
-        e.preventDefault();
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
 
-        const anchor = this.getAttribute("href").split("?")[0];
-        const newUrl = `${currentUrl.origin}${currentUrl.pathname}${anchor}${utmParams}`;
+            const anchor = this.getAttribute("href").split("?")[0];
+            const newUrl = `${currentUrl.origin}${currentUrl.pathname}${anchor}${utmParams}`;
 
-        history.pushState(null, '', newUrl); // Update URL without reload
-        const target = document.querySelector(anchor);
-        if (target) target.scrollIntoView({ behavior: "smooth" });
-      });
+            history.pushState(null, '', newUrl); // Update URL without reload
+            const target = document.querySelector(anchor);
+            if (target) target.scrollIntoView({ behavior: "smooth" });
+        });
     });
-  })();
+})();
 
 
-  
