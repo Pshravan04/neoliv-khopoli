@@ -12,7 +12,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background:linear-gradient(195deg, #53d161, #23b73c);
+    background:linear-gradient(195deg, #006faf, #006faf);
   }
 
   .slide-submit button {
@@ -26,7 +26,7 @@
     background-color: unset;
     background:#fff; 
     font-weight: bold;
-    color: #4dcd5b;
+    color: #006faf;
     border: none;
     padding: 1px;
     border-radius: 2px;
